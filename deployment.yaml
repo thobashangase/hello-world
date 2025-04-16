@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-world
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+        - name: hello-world
+          image: thobashangase/hello-world:latest
+          resources:
+            requests:
+              memory: "1G"
+              cpu: "250m"
+            limits:
+              memory: "2G"
+              cpu: "500m"
+          ports:
+          - containerPort: 3000
